@@ -1,0 +1,35 @@
+language: ruby
+rvm:
+  - 2.7
+
+before_script:
+- sudo apt update -y
+- sudo apt install zip git -y
+
+script:
+  - dd if=/dev/zero of=/tmp/testfile bs=1024 count=10240
+  - ruby -v
+
+jobs:
+  include:
+    - env: Power-Focal
+      dist: focal # default (xenial) does not work
+      arch: ppc64le
+      os: linux
+  
+    - env: Power-Bionic
+      dist: bionic
+      arch: ppc64le
+      os: linux 
+      
+    - name: x86
+      dist: focal
+      os: linux
+
+deploy:
+  provider: releases
+  api_key: ${GITHUB_OAUTH_TOKEN}
+  file: /tmp/testfile
+  skip_cleanup: true
+  on:
+    branch: main
