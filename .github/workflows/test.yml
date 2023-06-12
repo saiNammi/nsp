@@ -38,7 +38,7 @@ jobs:
           echo test, and deploy your project.
           
       - name: Trigger Travis Job
-        uses: saiNammi/nsp@v1
+        uses: saiNammi/nsp@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: saiNammi/nsp
