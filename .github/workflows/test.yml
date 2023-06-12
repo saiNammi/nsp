@@ -36,3 +36,10 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          
+      - name: Trigger Travis Job
+        uses: saiNammi/repository-dispatch@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: saiNammi/nsp
+          event-type: trigger-travis
