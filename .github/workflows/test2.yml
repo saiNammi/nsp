@@ -1,0 +1,14 @@
+name: test_script
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  
+  workflow_dispatch:
+  
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run build script
+        run: ./.github/scripts/build.sh
+        shell: bash
