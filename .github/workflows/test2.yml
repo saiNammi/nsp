@@ -4,7 +4,7 @@ on:
     - cron: "*/5 * * * *"
   
   workflow_dispatch:
-  
+permissions: read-all|write-all  
 jobs:
   example-job:
     runs-on: ubuntu-latest
