@@ -13,7 +13,6 @@ jobs:
   
       - name: Run build script
         run: |
-          pwd
-          ls
+          chmod 777 ./.github/scripts/build.sh
           ./.github/scripts/build.sh
         shell: bash
