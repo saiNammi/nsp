@@ -10,26 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
-      - shell: bash
-        run: |
-          expr 3 + 7 > math-homework.txt
-      - name: Upload math result for job 1
-        uses: actions/upload-artifact@v3
-        with:
-          name: homework
-          path: math-homework.txt
           
       - name: date
         shell: bash
         run: |
           date >> ./date.log
       
-      - name: Upload result
-        uses: actions/upload-artifact@v3
+      - name: Update resources
+        uses: test-room-7/action-update-file@v1
         with:
-          name: updatedDate
-          path: date.log
+          file-path: date.log
+          commit-msg: Update resources
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Run build script
         run: |
