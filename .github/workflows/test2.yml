@@ -4,9 +4,10 @@ on:
     - cron: "*/5 * * * *"
   
   workflow_dispatch:
-permissions: read-all|write-all  
+
 jobs:
   example-job:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
