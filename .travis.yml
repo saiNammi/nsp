@@ -1,35 +1,33 @@
-language: ruby
-rvm:
-  - 2.7
+arch: ppc64le
+group: power-focal
 
-before_script:
-- sudo apt update -y
-- sudo apt install zip git -y
+services:
+    - docker
 
-script:
-  - dd if=/dev/zero of=/tmp/testfile bs=1024 count=10240
-  - ruby -v
+before_install:
+    - sudo apt install -y jq; jq --version
+    # Currently pointing to test branch code of build-script repo
+    - git clone https://github.com/nikhil-kalbande/build-scripts.git
+    - cd build-scripts; git checkout jen-travis-mig
+
+env:
+  global:
+    - PACKAGE_NAME="dex"
+    - VERSION="v2.35.3"
+    - LANGUAGE="Nodejs"
 
 jobs:
   include:
-    - env: Power-Focal
-      dist: focal # default (xenial) does not work
-      arch: ppc64le
-      os: linux
-  
-    - env: Power-Bionic
-      dist: bionic
-      arch: ppc64le
-      os: linux 
-      
-    - name: x86
-      dist: focal
-      os: linux
-
-deploy:
-  provider: releases
-  api_key: ${GITHUB_OAUTH_TOKEN}
-  file: /tmp/testfile
-  skip_cleanup: true
-  on:
-    branch: main
+    - stage: warm_cache
+      script:
+        - echo "Hello world" > foo.txt
+      workspaces:
+        create:
+          name: ws1
+          paths:
+            - foo.txt
+    - stage: use_cache
+      workspaces:
+        use: ws1
+      script:
+        - cat foo.txt || true
