@@ -5,16 +5,17 @@ arch: ppc64le
 services:
     - docker
     
-before_install:
-    - sudo apt install -y jq; jq --version
-    # Currently pointing to test branch code of build-script repo
-    - git clone https://github.com/nikhil-kalbande/build-scripts.git
-    - cd build-scripts; git checkout jen-travis-mig
+
 
 
 jobs:
   include:
     - stage: warm_cache
+      before_install:
+        - sudo apt install -y jq; jq --version
+        # Currently pointing to test branch code of build-script repo
+        - git clone https://github.com/nikhil-kalbande/build-scripts.git
+        - cd build-scripts; git checkout jen-travis-mig
       script:
         - echo "Hello world" > foo.txt
       workspaces:
@@ -25,7 +26,7 @@ jobs:
     - stage: use_cache
       workspaces:
         use: ws1
-      git:
-        clone: false
+      before_script:
+        - ls -a
       script:
         - cat foo.txt
