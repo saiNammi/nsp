@@ -1,6 +1,6 @@
-os: linux-ppc64le
+os: linux
 dist: focal
-#arch: ppc64le
+arch: ppc64le
 #group: power-focal
 
 services:
