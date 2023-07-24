@@ -25,7 +25,8 @@ jobs:
       workspaces:
         use: ws1
       before_script:
-        - cd build_scripts
-        - ls -a
+        - ls -ltr
+        - cd /home/travis/build/saiNammi/nsp/build-scripts
+        - ls -ltr
       script:
         - cat foo.txt
