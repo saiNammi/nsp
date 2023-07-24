@@ -6,8 +6,6 @@ services:
     - docker
     
 
-
-
 jobs:
   include:
     - stage: warm_cache
@@ -27,6 +25,7 @@ jobs:
       workspaces:
         use: ws1
       before_script:
+        - cd build_scripts
         - ls -a
       script:
         - cat foo.txt
