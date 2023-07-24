@@ -6,12 +6,6 @@ arch: ppc64le
 services:
     - docker
 
-before_install:
-    - sudo apt install -y jq; jq --version
-    # Currently pointing to test branch code of build-script repo
-    - git clone https://github.com/nikhil-kalbande/build-scripts.git
-    - cd build-scripts; git checkout jen-travis-mig
-
 env:
   global:
     - PACKAGE_NAME="dex"
