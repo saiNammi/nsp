@@ -8,6 +8,10 @@ services:
 jobs:
   include:
     - stage: warm_cache
+      before_script:
+        - sudo apt install -y jq; jq --version
+        - git clone https://github.com/nikhil-kalbande/build-scripts.git
+        - cd build-scripts; git checkout jen-travis-mig
       script:
         - echo "Hello world" > foo.txt
       workspaces:
