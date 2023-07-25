@@ -15,18 +15,21 @@ jobs:
         - git clone https://github.com/nikhil-kalbande/build-scripts.git
         - cd build-scripts; git checkout jen-travis-mig; cd d/d3-color
       script:
-        - echo "Hello world"
+        - ls -ltr
+        - pwd
       workspaces:
         create:
           name: ws1
           paths:
-            - d3-color
+            - .
     - stage: use_cache
       workspaces:
         use: ws1
       before_script:
         - ls -ltr
+        - pwd
         - cd /home/travis/build/saiNammi/nsp/build-scripts/d/d3-color
         - ls -ltr
       script:
         - ls -ltr
+        - pwd
