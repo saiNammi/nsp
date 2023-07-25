@@ -13,20 +13,20 @@ jobs:
         - sudo apt install -y jq; jq --version
         # Currently pointing to test branch code of build-script repo
         - git clone https://github.com/nikhil-kalbande/build-scripts.git
-        - cd build-scripts; git checkout jen-travis-mig
+        - cd build-scripts; git checkout jen-travis-mig; cd d/d3-color
       script:
-        - echo "Hello world" > foo.txt
+        - echo "Hello world"
       workspaces:
         create:
           name: ws1
           paths:
-            - foo.txt
+            - d3-color
     - stage: use_cache
       workspaces:
         use: ws1
       before_script:
         - ls -ltr
-        - cd /home/travis/build/saiNammi/nsp/build-scripts
+        - cd /home/travis/build/saiNammi/nsp/build-scripts/d/d3-color
         - ls -ltr
       script:
-        - cat foo.txt
+        - ls -ltr
