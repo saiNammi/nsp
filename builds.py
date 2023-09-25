@@ -10,8 +10,8 @@ print("setting the docker client")
 try:
   client = docker.DockerClient(base_url='unix://var/run/docker.sock')
   print("docker client set")
-except (APIError, DockerException, ReadTimeout):
-  print("error creating docker client")
+except docker.errors.DockerException as e:
+  print(f"error creating docker client: {e}")
   
 client.images.pull('nginx')
 client.images.pull('ubuntu')
