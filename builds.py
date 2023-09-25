@@ -12,7 +12,7 @@ def trigger_script_validation_checks(image_name = "registry.access.redhat.com/ub
     client = docker.DockerClient(base_url='unix://var/run/docker.sock')
     container = client.containers.run(
         image_name,
-        "/home/tester,
+        "/home/tester",
         network = 'host',
         detach = True,
         volumes = {
