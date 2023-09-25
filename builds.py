@@ -27,7 +27,7 @@ def trigger_script_validation_checks(image_name = "registry.access.redhat.com/ub
         print(container.logs())
     container.remove()
     if int(result["StatusCode"]) != 0:
-        raise Exception(f"Build script validation failed!")
+        raise Exception("Build script validation failed!")
     else:
         return True
 
