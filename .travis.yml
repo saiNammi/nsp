@@ -12,6 +12,6 @@ before_install:
 
 script:
     - sudo apt update -y && sudo apt-get install file -y
-    - pip3 install requests
-    - pip3 install docker
+    - pip3 install --upgrade requests
+    - pip3 install --upgrade docker
     - python3 builds.py
