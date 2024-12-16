@@ -10,4 +10,5 @@ services:
 
 script:
     - lscpu && free -h && df -hT
+    - nproc
 
