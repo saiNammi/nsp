@@ -2,7 +2,9 @@
 arch: ppc64le
 dist: focal
 os: linux
-language: shell
+language: go
+go:
+- "1.23.4"
 
 services:
     - docker
