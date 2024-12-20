@@ -4,7 +4,7 @@ dist: focal
 os: linux
 language: go
 go:
-- "1.23.4"
+- "1.23.x"
 
 services:
     - docker
