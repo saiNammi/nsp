@@ -8,6 +8,6 @@ services:
     - docker
     
 script:
-    - lscpu && free -h && df -hT
+    - free -h
     - nproc
 
