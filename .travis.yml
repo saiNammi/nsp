@@ -2,14 +2,11 @@
 arch: ppc64le
 dist: focal
 os: linux
-language: go
-go:
-- "1.22.x"
+language: shell
 
 services:
     - docker
     
-
 script:
     - lscpu && free -h && df -hT
     - nproc
